@@ -1,9 +1,7 @@
 from django.db import models, DataError, IntegrityError
 
 from authentication.models import CustomUser
-from author.models import Author
 from book.models import Book
-import datetime
 
 
 class Order(models.Model):
