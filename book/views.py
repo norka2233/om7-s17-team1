@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
 
 from .models import Book
-from order.models import Order
 
 
 class BookListView(View):
@@ -21,5 +19,5 @@ class BookDetailView(View):
 
 class BookUnorderedListView(View):
     def get(self, request):
-        books = Book.objects.filter(Q(order=None))
+        books = Book.objects.filter(order=None)
         return render(request, 'book/book_unordered_list.html', context={'books': books})
