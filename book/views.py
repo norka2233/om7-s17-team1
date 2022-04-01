@@ -32,7 +32,7 @@ class BookListOrderedDesc(View):
 
 class BookListOrderedCount(View):
     def get(self, request):
-        books = Book.objects.order_by('id')
+        books = Book.objects.order_by('count')
         context = {'books': books}
         return render(request, 'book/book_list.html', context=context)
 
