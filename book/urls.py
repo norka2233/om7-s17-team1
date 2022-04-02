@@ -8,5 +8,6 @@ urlpatterns = [
     path('book_unordered_list/', views.BookUnorderedListView.as_view(), name='book_unordered_list'),
     path('book_list/book_list_asc', views.BookListOrderedAsc.as_view(), name='book_list/book_list_asc'),
     path('book_list/book_list_desc', views.BookListOrderedDesc.as_view(), name='book_list/book_list_desc'),
-    path('book_list/book_list_count', views.BookListOrderedCount.as_view(), name='book_list/book_list_count')
+    path('book_list/book_list_count', views.BookListOrderedCount.as_view(), name='book_list/book_list_count'),
+    path('user_book_list/<int:user_id>', views.UserBookList.as_view(), name='user_book_list'),
 ]
