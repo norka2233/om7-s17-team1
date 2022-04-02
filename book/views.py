@@ -16,7 +16,8 @@ class BookListView(View):
 class BookDetailView(View):
     def get(self, request, book_id):
         book = get_object_or_404(Book, id=book_id)
-        return render(request, 'book/book_detail.html', context={'book': book})
+        authors = book.authors.all()
+        return render(request, 'book/book_detail.html', context={'book': book, 'authors': authors})
 
 
 class BookListOrderedAsc(View):
