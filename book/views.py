@@ -20,6 +20,12 @@ class BookDetailView(View):
         return render(request, 'book/book_detail.html', context={'book': book, 'authors': authors})
 
 
+class BookUnorderedListView(View):
+    def get(self, request):
+        books = Book.objects.filter(order=None)
+        return render(request, 'book/book_unordered_list.html', context={'books': books})
+
+
 class BookListOrderedAsc(View):
     def get(self, request):
         books = Book.objects.order_by('name').all()
