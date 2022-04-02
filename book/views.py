@@ -11,8 +11,8 @@ from .models import Book
 class BookListView(View):
     def get(self, request):
         books = Book.objects.all()
-        book_name = request.GET.get('book_name').strip()
-        author_surname = request.GET.get('author_surname').strip()
+        book_name = request.GET.get('book_name')
+        author_surname = request.GET.get('author_surname')
 
         if book_name:
             books = books.filter(name__contains=book_name)
