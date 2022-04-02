@@ -38,6 +38,7 @@
                             <div class="card-body">
                                 <p class="card-text">{{ book.name }}</p>
                                 <p class="card-text">{{ book.description }}</p>
+                                <p class="card-text">{{ book.count }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="{% url 'book_detail' book_id=book.id %}"
