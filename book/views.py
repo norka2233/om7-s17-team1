@@ -2,11 +2,8 @@ from django.shortcuts import render
 from django.views import View
 
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView
 
 from .models import Book
-from .models import Author
-
 
 
 class BookListView(View):
@@ -27,7 +24,8 @@ class BookListView(View):
 class BookDetailView(View):
     def get(self, request, book_id):
         book = get_object_or_404(Book, id=book_id)
-        return render(request, 'book/book_detail.html', context={'book': book})
+        authors = book.authors.all()
+        return render(request, 'book/book_detail.html', context={'book': book, 'authors': authors})
 
 
 class BookByAuthorView(View):

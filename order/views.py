@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.views import View
 from django.db.models import F
-from django.shortcuts import get_object_or_404
-
 
 from .models import Order
 
