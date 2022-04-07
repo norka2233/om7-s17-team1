@@ -14,7 +14,6 @@
     <div class="row">
         <form method="post" class="col-md-4 col-lg-4 col-12">
             {% csrf_token %}
-
             {% for field in form %}
             <div class="form-group mt-2">
                 {{ field.label_tag }}
