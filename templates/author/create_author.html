@@ -1,0 +1,22 @@
+{% extends 'author/author_list.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h1>Add new author</h1>
+    <hr>
+    <form method="POST" class="col-md-4 col-lg-4 col-12">{% csrf_token %}
+        {% for field in form %}
+        <div class="form-group mt-2">
+            {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+            <div class="alert alert-danger mt-1">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
+    </form>
+</div>
+{% endblock %}
