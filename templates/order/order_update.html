@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block title %}Update Order{% endblock %}
+
+{% block content %}
+
+
+<div class="container mt-4">
+
+    <h1>Update Order</h1>
+    <hr>
+    <div class="row">
+        <form method="post" class="col-md-4 col-lg-4 col-12">
+            {% csrf_token %}
+
+            <div class="form-group mt-2">
+                {{ form.plated_end_at.label_tag }}
+                <span class="visually-hidden" id="platedEndAt">{{ form.plated_end_at.value|date:'c' }}</span>
+                {% render_field form.plated_end_at class="form-control" type="datetime-local" %}
+            </div>
+
+            <script>
+
+                    // This part is necessary because datetime-local and Django doesn't work well together
+                    // All what is doing here is setting value to input because by default it work incorrect
+                    // as it sets datetime in wrong format, but HTML work with only one yyyy:mm:ddThh:mm
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                       const dateInput = document.getElementById('id_plated_end_at');
+                       const date = document.getElementById('platedEndAt').innerText;
+                       dateInput.value = date;
+                    });
+
+                </script>
+
+            <button class="btn btn-primary mt-3" type="submit">Submit</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
