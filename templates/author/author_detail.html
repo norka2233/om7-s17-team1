@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ author.name }} {{ author.surname }} {{ author.patronymic }}{% endblock %}
+
+{% block content %}
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal">{{ author.surname }} {{ author.name }} {{ author.patronymic}}</h1>
+        <a class="btn btn-outline-primary" href="{% url 'edit_author' pk=author.pk %}"><span class="glyphicon glyphicon-pencil">edit</span></a>
+    </div>
+
+    <h3>Books</h3>
+    <hr>
+    <div class="row justify-content-center">
+
+        {% for book in author.get_books %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.name }}</h5>
+                <a href="{% url 'book_detail' book.id %}" class="btn btn-outline-primary">book details</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
