@@ -10,4 +10,6 @@ urlpatterns = [
     path('book_list/book_list_desc', views.BookListOrderedDesc.as_view(), name='book_list/book_list_desc'),
     path('book_list/book_list_count', views.BookListOrderedCount.as_view(), name='book_list/book_list_count'),
     path('user_book_list/<int:user_id>', views.UserBookList.as_view(), name='user_book_list'),
+    path('create/', views.CreateBookView.as_view(), name="create_book"),
+    path('update/<int:pk>/', views.UpdateBookView.as_view(), name="update_book"),
 ]

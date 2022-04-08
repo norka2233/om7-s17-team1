@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
-
+from django.views import generic
+from book.form import CreateBookForm, UpdateBookForm
 from django.shortcuts import get_object_or_404
 
 from .models import Book
@@ -63,3 +64,21 @@ class UserBookList(View):
     def get(self, request, user_id):
         books = Book.objects.filter(order__user=user_id)
         return render(request, 'book/user_book_list.html', context={'books': books})
+
+
+class CreateBookView(generic.CreateView):
+
+    model = Book
+    form_class = CreateBookForm
+    template_name = 'book/create_update_book.html'
+    success_url = '/books/book_list'
+    extra_context = {'title': 'Create Book'}
+
+
+class UpdateBookView(generic.UpdateView):
+
+    model = Book
+    form_class = UpdateBookForm
+    template_name = 'book/create_update_book.html'
+    success_url = '/books/book_list/'
+    extra_context = {'title': 'Update User'}

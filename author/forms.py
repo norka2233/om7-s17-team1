@@ -5,4 +5,4 @@ from .models import Author
 class CreateAuthorForm(forms.ModelForm):
     class Meta:
         model = Author
-        fields = ('name', 'surname', 'patronymic',)
+        fields = ('name', 'surname', 'patronymic')
